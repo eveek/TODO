@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+html, body, *::after, *::before, * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --light-blue : #2759cd;
+    --dark-blue : #304166;
+    --sharp-color: #ee4932;
+}
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Righteous', cursive;
+}
+
+#wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    "aside main"
+    "aside main"
+    "foot foot";
+    grid-template-columns: 350px 1fr;
+    grid-template-rows: repeat(2, 1fr) auto;
+}
+
+aside {
+    grid-area: aside;
+    width: 350px;
+    height: 100%;
+    background-color: var(--dark-blue);
+    padding: 50px 20px;
+}
+
+aside #logo {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+aside h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: var(--sharp-color);
+}
+
+aside ul li{
+    list-style: none;
+    text-align: center;
+    padding: 15px;
+    border: 5px solid var(--light-blue);
+    /* border-radius: 20px; */
+    margin-bottom: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+aside ul li.active {
+    background-color: var(--light-blue);
+}
+
+aside ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+input{
+    font-family: inherit;
+}
+
+aside form {
+    margin-top: 50px;
+}
+
+aside form input {
+    width: 100%;
+    padding: 15px;
+    background-color: transparent;
+    border-style: none;
+    border: 5px solid white;
+    font-size: 15px;;
+    outline: none;
+    color: white;
+}
+
+aside form input::placeholder {
+    color: white;
+}
+
+aside form button{
+    width: 100%;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 20px;
+    background-color: var(--sharp-color);
+    color: white;
+}
+
+button{
+    font-family: inherit;
+    border-style: none;
+    cursor: pointer;
+}
+
+
+footer {
+    grid-area: foot;
+    height: 50px;
+    background-color: var(--light-blue);
+}
+
+
+/* MAIN */
+main {
+    grid-area: main;
+    padding: 100px;
+    background-color: #ebeff9;
+}
+
+main #content {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 15px 0px #00000024;
+    padding: 30px;
+}
+
+main #content h2{
+    font-size: 40px;
+}
