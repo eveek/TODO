@@ -43,6 +43,12 @@ aside #logo {
     font-size: 50px;
     text-align: center;
     margin-bottom: 50px;
+    display: flex;
+}
+
+aside #logo img {
+    width: 70px;
+    height: 70px;
 }
 
 aside h3 {
@@ -134,4 +140,63 @@ main #content {
 
 main #content h2{
     font-size: 40px;
+    display: flex;
+    /* color: var(--sharp-color); */
+    color: white;
+    text-align: center;
+    background-color: var(--light-blue);
+    padding: 15px;
+}
+
+main #content ul {
+    margin-top: 20px;
+}
+
+main #content ul li {
+    display: flex;
+    list-style: none;
+    font-size: 25px;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: #ebeff9;
+    justify-content: space-between;
+    /* border-bottom: 3px solid var(--light-blue); */
+}
+
+main #content ul li.low_imp {
+    border-left: 10px solid green;
+}
+main #content ul li.medium_imp {
+    border-left: 10px solid rgb(255, 183, 0);
+}
+main #content ul li.high_imp {
+    border-left: 10px solid rgb(255, 0, 0);
+}
+
+main #content ul li .li_title {
+    display: flex;
+    align-items: center;
+}
+
+main #content ul li .check_box {
+    border: 3px solid var(--light-blue);
+    height: 25px;
+    width: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+main #content ul li .li_btn {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+
+}
+
+main #content ul li button img {
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+
 }
