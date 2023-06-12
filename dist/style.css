@@ -138,14 +138,20 @@ main #content {
     padding: 30px;
 }
 
-main #content h2{
+main #content #content_head {
     font-size: 40px;
     display: flex;
     /* color: var(--sharp-color); */
     color: white;
     text-align: center;
+    justify-content: space-between;
     background-color: var(--light-blue);
     padding: 15px;
+}
+
+main #content #content_head img {
+    height: 80px;
+    width: auto;
 }
 
 main #content ul {
@@ -198,5 +204,32 @@ main #content ul li button img {
     height: 25px;
     width: 25px;
     cursor: pointer;
+}
 
+
+
+/* foot */
+footer {
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+footer img {
+    height: 25px;
+    width: auto;
+}
+
+footer a {
+    margin: 0 7px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+}
+
+footer a:active {
+    color: white;
 }
