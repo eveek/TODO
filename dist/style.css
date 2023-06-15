@@ -149,11 +149,6 @@ main #content #content_head {
     padding: 15px;
 }
 
-main #content #content_head img {
-    height: 80px;
-    width: auto;
-}
-
 main #content ul {
     margin-top: 20px;
 }
@@ -185,7 +180,7 @@ main #content ul li .li_title {
     align-items: center;
 }
 
-main #content ul li .check_box {
+main #content ul li input[type="checkbox"] {
     border: 3px solid var(--light-blue);
     height: 25px;
     width: 25px;
@@ -232,4 +227,97 @@ footer a {
 
 footer a:active {
     color: white;
+}
+
+
+
+
+/* Expands */
+.module {
+    z-index: 100;
+    /* display: none; */
+}
+
+#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #304166;
+    opacity: 0.5;
+}
+
+
+/* task info */
+#task_info {
+    position: absolute;
+    top: calc(50% - 250px);
+    left: calc(50% - 250px);
+    height: fit-content;
+    width: 500px;
+    background-color: white;
+    padding: 15px;
+    /* display: none; */
+}
+
+#task_info h2, #create_task h2 {
+    background-color: #2759cd;
+    padding: 15px;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient(to right, var(--light-blue), rgb(59, 183, 254));
+}
+
+#task_info table {
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#task_info table tr {
+    padding: 15px;
+    border-bottom: 3px solid green;
+    background-color: #2759cd;
+    background-color: #ebeff9;
+}
+
+#task_info table th {
+    display: flex;
+    margin-right: 15px;
+}
+
+#task_info table th,
+#task_info table td {
+    padding: 10px;
+}
+
+#task_info button {
+    font-size: 20px;
+    padding: 15px;
+    background-color: var(--sharp-color);
+    color: white;
+    float: right;
+    margin-bottom: -35px;
+}
+
+
+/* Create task */
+#create_task {
+    position: absolute;
+    top: calc(50% - 350px);
+    left: calc(50% - 350px);
+    /* height: fit-content; */
+    height: 700px;
+    width: 700px;
+    background-color: white;
+    padding: 15px;
+    display: none;
+}
+
+#create_task form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
 }

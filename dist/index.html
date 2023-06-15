@@ -35,7 +35,7 @@
                 <ul>
                     <li class="low_imp">
                         <div class="li_title">
-                            <div class="check_box"></div>
+                            <input type="checkbox">
                             <p>Visit the laundry shop</p>
                         </div>
                         <div class="li_btn">
@@ -47,7 +47,7 @@
                     </li>
                     <li class="medium_imp">
                         <div class="li_title">
-                            <div class="check_box"></div>
+                            <input type="checkbox">
                             <p>Wash my school bag</p>
                         </div>
                         <div class="li_btn">
@@ -59,7 +59,7 @@
                     </li>
                     <li class="high_imp">
                         <div class="li_title">
-                            <div class="check_box"></div>
+                            <input type="checkbox" id="check3">
                             <p>Iron my suit for work</p>
                         </div>
                         <div class="li_btn">
@@ -72,6 +72,56 @@
                 </ul>
             </div>
         </main>
+        <div class="module">
+            <div id="background"></div>
+            <div id="task_info">
+                <h2>Task Info</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Title:</th>
+                            <td>Laundry</td>
+                        </tr>
+                        <tr>
+                            <th>Description:</th>
+                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore, eum. Numquam, culpa iste? Perferendis ea ab
+                                voluptatibus, accusantium omnis incidunt.</td>
+                        </tr>
+                        <tr>
+                            <th>Due Date:</th>
+                            <td>2023-06-21</td>
+                        </tr>
+                        <tr>
+                            <th>Priority:</th>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <th>Project:</th>
+                            <td>Laundry</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button>Close</button>
+            </div>
+            <div id="create_task">
+                <h2>Add Task</h2>
+                <form action="">
+                    <input type="text" name="title" placeholder="*Task title">
+                    <input type="text" name="description" placeholder="Description(optional)">
+                    <label for="due date">Due date:</label>
+                    <input type="date" name="due date" id="due date" placeholder="Due date" >
+                    <div id="priority">
+                        <div>Priority:</div>
+                        <input type="radio" id="low_priority" name="priority">
+                        <label for="low_priority">Low</label>
+                        <input type="radio" id="medium_priority" name="priority">
+                        <label for="medium_priority">medium</label>
+                        <input type="radio" id="high_priority" name="priority">
+                        <label for="high_priority">High</label>
+                    </div>
+                </form>
+            </div>
+        </div>
         <footer>Icons by <a href="http://flaticon.com" target="_blank"> flaticon </a> | <a href="https://github.com/eveek/TODO" target="_blank"><img src="./images/github.png" alt="github_logo"><img src="" alt=""></a> |  2023 &copy; eveek</footer>
     </div>
 </body>
