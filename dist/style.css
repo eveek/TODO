@@ -10,7 +10,11 @@ html, body, *::after, *::before, * {
 :root {
     --light-blue : #2759cd;
     --dark-blue : #304166;
-    --sharp-color: #ee4932;
+    --sharp-color: #ee4932;;
+    --grey-color: #ebeff9;
+    --low-imp: green;
+    --medium-imp: rgb(232, 142, 7);
+    --high-imp: rgb(255, 0, 0);
 }
 
 html, body {
@@ -160,7 +164,7 @@ main #content ul li {
     align-items: center;
     margin-bottom: 10px;
     padding: 15px;
-    background-color: #ebeff9;
+    background-color: var(--grey-color);
     justify-content: space-between;
     /* border-bottom: 3px solid var(--light-blue); */
 }
@@ -258,7 +262,7 @@ footer a:active {
     width: 500px;
     background-color: white;
     padding: 15px;
-    /* display: none; */
+    display: none;
 }
 
 #task_info h2, #create_task h2 {
@@ -279,8 +283,7 @@ footer a:active {
 #task_info table tr {
     padding: 15px;
     border-bottom: 3px solid green;
-    background-color: #2759cd;
-    background-color: #ebeff9;
+    background-color: var(--grey-color);
 }
 
 #task_info table th {
@@ -309,15 +312,84 @@ footer a:active {
     top: calc(50% - 350px);
     left: calc(50% - 350px);
     /* height: fit-content; */
-    height: 700px;
+    height: 500px;
     width: 700px;
     background-color: white;
     padding: 15px;
-    display: none;
+    /* display: none; */
 }
 
 #create_task form {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
+    font-size: 20px;
+}
+
+#create_task form input[type="text"] {
+    padding: 15px;
+    font-size: 20px;
+    margin-bottom: 30px;
+    background-color: var(--grey-color);
+    border: none;
+    outline: none;
+}
+
+#create_task form textarea {
+    background-color: var(--grey-color);
+    border: none;
+    resize: none;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+#create_task form input[type="date"] {
+    background-color: var(--grey-color);
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    margin-left: 10px;
+    color: rgb(110, 104, 104);
+} 
+
+#create_task form #due_date,
+#create_task form #priority {
+    margin-bottom: 30px;
+    color: rgb(110, 104, 104);
+}
+
+#create_task form #priority {
+    display: flex;
+    align-items: center;
+}
+
+#create_task form #priority input {
+    visibility: hidden;
+}
+
+#create_task form #priority label {
+    border: 2px solid black;
+    font-size: 18px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#create_task form #priority label[for="low_priority"] {
+    border-color: var(--low-imp);
+    color: var(--low-imp);
+}
+#create_task form #priority label[for="medium_priority"] {
+    border-color: var(--medium-imp);
+    color: var(--medium-imp);
+}
+#create_task form #priority label[for="high_priority"] {
+    border-color: var(--high-imp);
+    color: var(--high-imp);
+}
+
+#create_task form button {
+    display: inline;
+    padding: 20px;
 }
