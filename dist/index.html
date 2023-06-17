@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="./images/logo_blue.png" type="image/x-icon">
-    <!-- <script defer src="main.js"></script> -->
+    <script defer src="main.js"></script>
     <title>TODO</title>
 </head>
 <body>
@@ -15,25 +15,25 @@
             <div id="logo"><img src="./images/checklist.png" alt="logo" srcset=""> Todo_list</div>
             <nav>
                 <h3>Projects</h3>
-                <ul>
-                    <li class="active"><a href="">Laundry</a></li>
+                <ul id="project_list">
+                    <!-- <li class="active"><a href="">Laundry</a></li>
                     <li><a href="">Cooking</a></li>
-                    <li><a href="">Learning</a></li>
+                    <li><a href="">Learning</a></li> -->
                 </ul>
             </nav>
             <form action="" id="add_project_form">
-                <input type="text" name="project_name" id="" placeholder="*Project name" autocomplete="off">
-                <button>Add Project</button>
+                <input type="text" name="project_name" id="new_project_name" placeholder="*Project name" autocomplete="off">
+                <button id="add_project_btn">Add Project</button>
             </form>
         </aside>
         <main>
             <div id="content">
                 <div id="content_head">
-                    <h2>// Laundry</h2>
+                    <h2 id="project_head_para">// Hi&#128075;, welcome!</h2>
                     <div></div>
                 </div>
-                <ul>
-                    <li class="low_imp">
+                <ul id="project_task_list">
+                    <!-- <li class="low_imp">
                         <div class="li_title">
                             <input type="checkbox">
                             <p>Visit the laundry shop</p>
@@ -68,8 +68,13 @@
                             <button><img src="./images/bin.png" alt="delete"></button>
                             <button><img src="./images/info.png" alt=""></button>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
+                <div id="project_bar">
+                    <button>Add Task</button>
+                    <div id="completed_task">Completed Task: <span id="comp_task">5</span></div>
+                    <div id="undone_task">Remaining Tasks: <span id="remain_task">7</span></div>
+                </div>
             </div>
         </main>
         <div class="module">
@@ -105,24 +110,24 @@
             </div>
             <div id="create_task">
                 <h2>Add Task</h2>
-                <form action="">
-                    <input type="text" name="title" placeholder="*Task title">
-                    <textarea name="Description" id="Description" cols="20" rows="3" placeholder="Description (optional)"></textarea>
+                <form action="" id="add_task_form">
+                    <input type="text" name="title" placeholder="*Task title" id="title" required>
+                    <textarea name="Description" id="description" cols="20" rows="3" placeholder="Description (optional)"></textarea>
                     <div id="due_date">
-                        <label for="due date">Due date:</label>
-                        <input type="date" name="due date" id="due date" placeholder="Due date" >
+                        <label for="due_date">Due date:</label>
+                        <input type="date" name="due_date" id="due_date" value="">
                     </div>
                     <div id="priority">
                         <div>Priority:</div>
-                        <input type="radio" id="low_priority" name="priority">
+                        <input type="radio" id="low_priority" name="priority" value="low" checked>
                         <label for="low_priority">Low</label>
-                        <input type="radio" id="medium_priority" name="priority">
+                        <input type="radio" id="medium_priority" name="priority" value="medium">
                         <label for="medium_priority">medium</label>
-                        <input type="radio" id="high_priority" name="priority">
+                        <input type="radio" id="high_priority" name="priority" value="high">
                         <label for="high_priority">High</label>
-                        
+                        <input type="submit">
                     </div>
-                    <button>Create Task</button>
+                    <div><button>Create Task</button></div>
                 </form>
             </div>
         </div>

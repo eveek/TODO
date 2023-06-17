@@ -17,10 +17,14 @@ html, body, *::after, *::before, * {
     --high-imp: rgb(255, 0, 0);
 }
 
+::-webkit-scrollbar-thumb {
+    background-color: white;
+}
+
 html, body {
     height: 100vh;
     width: 100vw;
-    font-family: 'Righteous', cursive;
+    font-family: 'Righteous', sans-serif;
 }
 
 #wrapper {
@@ -61,6 +65,14 @@ aside h3 {
     color: var(--sharp-color);
 }
 
+aside ul {
+    height: fit-content;
+    max-height: 300px;
+    overflow: scroll;
+    margin: 0px -20px;
+    padding: 5px 20px;
+}
+
 aside ul li{
     list-style: none;
     text-align: center;
@@ -70,15 +82,15 @@ aside ul li{
     margin-bottom: 15px;
     font-size: 20px;
     cursor: pointer;
+    color: white;
 }
 
 aside ul li.active {
     background-color: var(--light-blue);
 }
 
-aside ul li a {
-    text-decoration: none;
-    color: white;
+aside ul li:hover {
+    background-color: var(--light-blue);
 }
 
 input{
@@ -130,13 +142,16 @@ footer {
 /* MAIN */
 main {
     grid-area: main;
-    padding: 100px;
+    /* padding: 100px; */
+    display: grid;
+    place-items: center;
     background-color: #ebeff9;
 }
 
 main #content {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
+    min-height: 700px;
     background-color: white;
     box-shadow: 0px 0px 15px 0px #00000024;
     padding: 30px;
@@ -155,6 +170,7 @@ main #content #content_head {
 
 main #content ul {
     margin-top: 20px;
+    height: 70%;
 }
 
 main #content ul li {
@@ -205,6 +221,22 @@ main #content ul li button img {
     cursor: pointer;
 }
 
+main #content #project_bar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    align-items: center;
+    margin-top: 20px;
+    display: none;
+}
+
+main #content #project_bar button {
+    font-size: 20px;
+    padding: 15px;
+    background-color: var(--sharp-color);
+    color: white;
+}
+
 
 
 /* foot */
@@ -248,8 +280,9 @@ footer a:active {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #304166;
-    opacity: 0.5;
+    background-color: #30416671;
+    /* display: none; */
+    backdrop-filter: blur(8px);
 }
 
 
@@ -258,10 +291,11 @@ footer a:active {
     position: absolute;
     top: calc(50% - 250px);
     left: calc(50% - 250px);
-    height: fit-content;
+    /* height: fit-content; */
     width: 500px;
     background-color: white;
     padding: 15px;
+    color: rgb(110, 104, 104);
     display: none;
 }
 
@@ -309,10 +343,10 @@ footer a:active {
 /* Create task */
 #create_task {
     position: absolute;
-    top: calc(50% - 350px);
+    top: calc(50% - 250px);
     left: calc(50% - 350px);
     /* height: fit-content; */
-    height: 500px;
+    height: 530px;
     width: 700px;
     background-color: white;
     padding: 15px;
@@ -343,6 +377,7 @@ footer a:active {
     font-family: inherit;
     font-size: 20px;
     margin-bottom: 30px;
+    outline: none;
 }
 
 #create_task form input[type="date"] {
@@ -389,7 +424,12 @@ footer a:active {
     color: var(--high-imp);
 }
 
-#create_task form button {
-    display: inline;
+#create_task button {
     padding: 20px;
+    font-size: 20px;
+    padding: 15px;
+    background-color: var(--sharp-color);
+    color: white;
+    float:right;
+    margin-bottom: -35px;
 }
