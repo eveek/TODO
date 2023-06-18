@@ -1,21 +1,30 @@
+import { projects } from "./addProject";
+import { activeProject } from "./addProject";
+
 
 const projectHead = document.getElementById("project_head_para");
 const projectTaskList = document.getElementById("project_task_list");
 
 
-function displayProject (projectName) {
-    projectHead.innerText = `// ${projectName}`;
-    const task = document.createElement("li");
-    task.innerHTML = `<div class="li_title">
+function displayProject () {
+    projectHead.innerText = `// ${activeProject.project}`;
+    projectTaskList.innerHTML = "";
+    projects[activeProject.project].forEach(tsk => {
+        const task = document.createElement("li");
+        task.className = `${tsk.priority}_imp`;
+        task.innerHTML = `<div class="li_title">
                             <input type="checkbox">
-                            <p>Visit the laundry shop</p>
+                            <p>${tsk.title}</p>
                         </div>
                         <div class="li_btn">
-                            <div class="due_date">25/07/2023</div>
+                            <div class="due_date">${tsk.dueDate}</div>
                             <button><img src="./images/edit.png" alt="edit"></button>
                             <button><img src="./images/bin.png" alt="delete"></button>
                             <button><img src="./images/info.png" alt=""></button>
                         </div>`;
+
+        projectTaskList.appendChild(task);
+    });
 
 }
 

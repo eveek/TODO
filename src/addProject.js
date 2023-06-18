@@ -5,7 +5,16 @@ const projectName = document.getElementById("new_project_name");
 
 
 let projects = {};
-let activeProject = "";
+const activeProject = {
+    project: "",
+
+    // get getProject() {
+    //     return this.project;
+    // },
+    set changeProject(project){
+        this.project = project;
+    }
+}
 
 function addProject() {
     const newProjectName = projectName.value;
@@ -16,8 +25,8 @@ function addProject() {
     projectList.appendChild(li);
     projectName.value = "";
     projects[strProjectName] = [];
-    activeProject = strProjectName;
-    displayProject(activeProject);
+    activeProject.changeProject = strProjectName;
+    displayProject();
 }
 
 export {addProject, projects, activeProject};

@@ -1,5 +1,7 @@
 import { projects } from "./addProject";
 import { activeProject } from "./addProject";
+import displayProject from "./displayProject";
+const { format } = require("date-fns");
 
 
 
@@ -14,17 +16,20 @@ class Task {
     }
 }
 
+
 function createNewTask () {
     const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
-    const date = document.getElementById("due_date");
-    const dueDate = new Date(date);
+    const date = document.getElementById("date").value;
+    const dueDate = format(new Date(date), "dd/MM/yyyy");
     const priorityGroup = document.getElementsByName("priority");
     const priority = Array.from(priorityGroup).find(radio => radio.checked).value;
 
     const newTask = new Task(title, description, dueDate, priority, false);
-    // projects[activeProject].push(newTask);
-    console.log(newTask)
+    projects[activeProject.project].push(newTask);
+    displayProject();
+    // console.log(projects[activeProject]);
+    // console.log(dueDate);
 }
 
 export default createNewTask;

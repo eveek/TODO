@@ -71,7 +71,7 @@
                     </li> -->
                 </ul>
                 <div id="project_bar">
-                    <button>Add Task</button>
+                    <button id="add_task_open">Add Task</button>
                     <div id="completed_task">Completed Task: <span id="comp_task">5</span></div>
                     <div id="undone_task">Remaining Tasks: <span id="remain_task">7</span></div>
                 </div>
@@ -115,7 +115,7 @@
                     <textarea name="Description" id="description" cols="20" rows="3" placeholder="Description (optional)"></textarea>
                     <div id="due_date">
                         <label for="due_date">Due date:</label>
-                        <input type="date" name="due_date" id="due_date" value="">
+                        <input type="date" name="due_date" id="date" required>
                     </div>
                     <div id="priority">
                         <div>Priority:</div>
