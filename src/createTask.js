@@ -1,6 +1,6 @@
 import { projects } from "./addProject";
 import { activeProject } from "./addProject";
-import displayProject from "./displayProject";
+import displayTodo from "./displayTodo";
 const { format } = require("date-fns");
 
 
@@ -26,9 +26,9 @@ function createNewTask () {
     const priority = Array.from(priorityGroup).find(radio => radio.checked).value;
 
     const newTask = new Task(title, description, dueDate, priority, false);
+
     projects[activeProject.project].push(newTask);
-    displayProject();
-    // console.log(projects[activeProject]);
+    displayTodo().displayProjectTask();
     // console.log(dueDate);
 }
 

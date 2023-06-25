@@ -1,16 +1,14 @@
-import displayProject from "./displayProject";
+import displayTodo from "./displayTodo";
+import indicateActiveProject from "./indicateActiveProject";
 
-const projectList = document.getElementById("project_list");
 const projectName = document.getElementById("new_project_name");
 
 
 let projects = {};
+let projectDomList = [];
 const activeProject = {
     project: "",
 
-    // get getProject() {
-    //     return this.project;
-    // },
     set changeProject(project){
         this.project = project;
     }
@@ -20,13 +18,15 @@ function addProject() {
     const newProjectName = projectName.value;
     if (newProjectName === "") return;
     const strProjectName = newProjectName.charAt(0).toUpperCase() + newProjectName.slice(1).toLowerCase();
-    const li = document.createElement("li");
-    li.textContent = strProjectName;
-    projectList.appendChild(li);
-    projectName.value = "";
-    projects[strProjectName] = [];
+
     activeProject.changeProject = strProjectName;
-    displayProject();
+    // const newProject = new project(strProjectName)
+    // projects.push(newProject);
+    projects[strProjectName] = [];
+    projectDomList.push(strProjectName);
+    displayTodo().displayProject();
+    projectName.value = "";
+    indicateActiveProject(strProjectName);
 }
 
-export {addProject, projects, activeProject};
+export {addProject, projects, projectDomList, activeProject};
