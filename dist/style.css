@@ -313,6 +313,7 @@ footer a:active {
     font-size: 18px;
     margin-top: 30px;
     margin-bottom: 20px;
+    width: 470px;
 }
 
 #task_info table tr {
@@ -414,15 +415,34 @@ footer a:active {
 
 #create_task form #priority label[for="low_priority"] {
     border-color: var(--low-imp);
-    color: var(--low-imp);
 }
 #create_task form #priority label[for="medium_priority"] {
     border-color: var(--medium-imp);
-    color: var(--medium-imp);
 }
 #create_task form #priority label[for="high_priority"] {
     border-color: var(--high-imp);
+}
+#priority label[for="low_priority"] {
+    color: var(--low-imp);
+}
+#priority label[for="medium_priority"] {
+    color: var(--medium-imp);
+}
+#priority label[for="high_priority"] {
     color: var(--high-imp);
+}
+
+#low_priority:checked ~ label[for="low_priority"] {
+    background-color: var(--low-imp);
+    color: white;
+}
+#medium_priority:checked ~ label[for="medium_priority"] {
+    background-color: var(--medium-imp);
+    color: white;
+}
+#high_priority:checked ~ label[for="high_priority"] {
+    background-color: var(--high-imp);
+    color: white;
 }
 
 #create_task button {

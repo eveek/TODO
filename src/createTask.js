@@ -29,7 +29,6 @@ function createNewTask () {
 
     projects[activeProject.project].push(newTask);
     displayTodo().displayProjectTask();
-    // console.log(dueDate);
 }
 
-export default createNewTask;
+export { createNewTask, Task };

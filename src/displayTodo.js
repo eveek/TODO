@@ -1,5 +1,4 @@
-import { projects, projectDomList } from "./addProject";
-import { activeProject } from "./addProject";
+import { projects, projectDomList, activeProject } from "./addProject";
 
 
 const projectHead = document.getElementById("project_head_para");
@@ -29,24 +28,45 @@ function displayTodo () {
     function displayProjectTask () {
         projectTaskList.innerHTML = "";
         projects[activeProject.project].forEach(tsk => {
-        const task = document.createElement("li");
-        task.className = `${tsk.priority}_imp`;
-        task.innerHTML = `<div class="li_title">
-                            <input type="checkbox">
-                            <p>${tsk.title}</p>
-                        </div>
-                        <div class="li_btn">
-                            <div class="due_date">${tsk.dueDate}</div>
-                            <button><img src="./images/edit.png" alt="edit"></button>
-                            <button><img src="./images/bin.png" alt="delete"></button>
-                            <button><img src="./images/info.png" alt=""></button>
-                        </div>`;
+        });
+        for (let i = 0; i < projects[activeProject.project].length; i++) {
+            const task = document.createElement("li");
+            task.className = `${projects[activeProject.project][i].priority}_imp`;
+            task.id = `${i}`
+            task.innerHTML = `<div class="li_title">
+                                <input type="checkbox">
+                                <p>${projects[activeProject.project][i].title}</p>
+                            </div>
+                            <div class="li_btn">
+                                <div class="due_date">${projects[activeProject.project][i].dueDate}</div>
+                                <button><img src="./images/edit.png" alt="edit"></button>
+                                <button><img src="./images/bin.png" alt="delete"></button>
+                                <button><img src="./images/info.png" alt="info"></button>
+                            </div>`;
+        
+            projectTaskList.appendChild(task);
 
-        projectTaskList.appendChild(task);
-    });
-}
+            
+        }
+    }
 
-return {displayProject, displayProjectTask}
+    function displayTaskInfo (index) {
+        const infoTitle = document.getElementById("info_title");
+        const infoDescription = document.getElementById("info_description");
+        const infoDate = document.getElementById("info_date");
+        const infoPriority = document.getElementById("info_priority");
+        const infoProject = document.getElementById("info_project");
+
+        const curProject = projects[activeProject.project][index];
+
+        infoTitle.innerText = curProject.title;
+        infoDescription.innerText = curProject.description;
+        infoDate.innerText = curProject.dueDate;
+        infoPriority.innerText = curProject.priority;
+        infoProject.innerText = activeProject.project;
+    }
+
+return {displayProject, displayProjectTask, displayTaskInfo}
 
 }
 

@@ -25,6 +25,7 @@ function addProject() {
     projects[strProjectName] = [];
     projectDomList.push(strProjectName);
     displayTodo().displayProject();
+    displayTodo().displayProjectTask();
     projectName.value = "";
     indicateActiveProject(strProjectName);
 }
