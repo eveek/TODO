@@ -1,6 +1,6 @@
-import { projects } from "./addProject";
-import { activeProject } from "./addProject";
+import { projects, activeProject } from "./addProject";
 import displayTodo from "./displayTodo";
+import { curTaskForm, curLiDiv } from ".";
 const { format } = require("date-fns");
 
 
@@ -27,7 +27,11 @@ function createNewTask () {
 
     const newTask = new Task(title, description, dueDate, priority, false);
 
-    projects[activeProject.project].push(newTask);
+    if (curTaskForm.form == "add") {
+        projects[activeProject.project].push(newTask);
+    } else {
+        projects[activeProject.project][~~curLiDiv.li] = newTask;
+    }
     displayTodo().displayProjectTask();
 }
 

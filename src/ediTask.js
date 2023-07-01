@@ -1,12 +1,13 @@
 import { projects, activeProject } from "./addProject";
+import { curTaskForm, curLiDiv } from ".";
 
 
-function ediTask (index) {
+function ediTask () {
     const title = document.getElementById("title");
     const description = document.getElementById("description");
     const date = document.getElementById("date");
 
-    const curProject = projects[activeProject.project][index];
+    const curProject = projects[activeProject.project][~~curLiDiv.li];
 
     title.value = curProject.title;
     description.value = curProject.description;

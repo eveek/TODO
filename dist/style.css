@@ -182,7 +182,10 @@ main #content ul li {
     padding: 15px;
     background-color: var(--grey-color);
     justify-content: space-between;
-    /* border-bottom: 3px solid var(--light-blue); */
+}
+
+main #content ul li.check {
+    filter: grayscale(0.6);
 }
 
 main #content ul li.low_imp {
@@ -227,7 +230,7 @@ main #content #project_bar {
     font-size: 20px;
     align-items: center;
     margin-top: 20px;
-    /* display: none; */
+    display: none;
 }
 
 main #content #project_bar button {

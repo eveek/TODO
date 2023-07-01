@@ -16,11 +16,14 @@ const infoClose = document.getElementById("info_close");
 const projectTaskList = document.getElementById("project_task_list");
 const taskHead = document.getElementById("task_head");
 const taskBtn = document.getElementById("tsk_btn");
+const taskLi = document.querySelectorAll("li_btn");
+const taskCheckBoxes = document.querySelectorAll(".tack_ckeckbox");
 
 
 // if (localStorage.getItem("todo") != null){
 //     projects = JSON.parse(localStorage.getItem("todo"))
-//     displayTodo()
+//     displayTodo().displayProject();
+//     displayTodo().displayProjectTask();
 // }
 const addTaskFormToggle = (mode) => {
     background.style.display = mode;
@@ -41,6 +44,7 @@ addTaskBtn.addEventListener('click', e => {
     e.preventDefault();
     taskHead.innerText = "Add Task";
     taskBtn.innerText = "Create Task";
+    curTaskForm.changeForm = "add";
     addTaskForm.reset();
     addTaskFormToggle("block");
 })
@@ -48,6 +52,7 @@ addTaskBtn.addEventListener('click', e => {
 
 addTaskForm.addEventListener('submit', e => {
     e.preventDefault();
+    // if (curTaskForm.form !== "add") return;
     createNewTask();
     addTaskForm.reset();
     addTaskFormToggle("none");
@@ -75,23 +80,58 @@ projectList.addEventListener('click', e => {
 
 projectTaskList.addEventListener('click', e => {
     const target = e.target;
-    const tParent = target.parentElement
-    const grandParent = tParent.parentElement
-    const ggrandParent = grandParent.parentElement
+    const tParent = target.parentElement;
+    const grandParent = tParent.parentElement;
+    const ggrandParent = grandParent.parentElement;
     const index = ggrandParent.id;
+    if (target.tagName !== "IMG") return;
     if (target.tagName == "IMG") {
         if (target.alt == "delete") {
             projects[activeProject.project].splice(index, 1);
         } else if (target.alt == "edit") {
             taskHead.innerText = "Edit Task";
             taskBtn.innerText = "Save Changes";
-            ediTask(~~index);
+            curTaskForm.changeForm = "edit";
+            curLiDiv.changeLi = index;
+            ediTask();
             addTaskFormToggle("block");
             
         } else if (target.alt == "info") {
             displayTodo().displayTaskInfo(~~index);
             taskInfoToggle("block");
-        }
-        displayTodo().displayProjectTask();
-    };
+        } 
+    }
+    displayTodo().displayProjectTask();
 })
+
+projectTaskList.addEventListener('click', e => {
+    if (e.target.tagName !== "INPUT") return;
+    const tParent = e.target.parentElement;
+    const grandParent = tParent.parentElement;
+    const index = grandParent.id;
+    projects[activeProject.project][~~index].checked = e.target.checked;
+    if (projects[activeProject.project][~~index].checked == true) {
+        grandParent.classList.add("check");
+    }else {
+        grandParent.classList.remove("check");
+        }
+    // grandParent.classList.add()
+    console.log(e.target.checked)
+})
+
+
+const curTaskForm = {
+    form: "",
+    set changeForm(formName) {
+        this.form = formName;
+    }
+}
+
+const curLiDiv = {
+    li: "",
+    set changeLi(li) {
+        this.li = li;
+    }
+}
+
+export { curTaskForm, curLiDiv }
