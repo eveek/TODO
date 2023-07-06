@@ -1,48 +1,77 @@
-import { projects, projectDomList, activeProject } from "./addProject";
+import { projects, projectArrList, activeProject } from "./addProject";
+import indicateActiveProject from "./indicateActiveProject";
+import { toggleProjectTokens } from ".";
+
 
 
 const projectHead = document.getElementById("project_head_para");
 const projectTaskList = document.getElementById("project_task_list");
 const projectList = document.getElementById("project_list");
-const taskBar = document.getElementById("project_bar");
+const completedTask = document.getElementById("comp_task");
+const remainingTask = document.getElementById("remain_task");
+
+
+function displayFigures () {
+    const proLength = projects.theProject[activeProject.project].length
+    let remainNumb = 0;
+    for (const proj of projects.theProject[activeProject.project]) {
+        if (proj.checked) remainNumb++;
+    }
+    completedTask.innerText = remainNumb;
+    remainingTask.innerText = proLength - remainNumb;
+    // console.log('vvv')
+}
 
 
 
 
 function displayTodo () {
-    // localStorage.setItem("todo", JSON.stringify(projects));
-    // const arrProjects = JSON.parse(localStorage.getItem("projects"));
+    
+    
     function displayProject () {
-        if (projectDomList.length >= 1) taskBar.style.display = "flex";
+        localStorage.setItem("pList", JSON.stringify(projectArrList.list));
+        let storageArrProjectsList = JSON.parse(localStorage.getItem("pList"));
+        // console.log(storageArrProjectsList)
+        if (storageArrProjectsList.length > 0 ) {
+            toggleProjectTokens("flex");
+            projectHead.innerText = `// ${activeProject.project}`;
+        } else {
+            toggleProjectTokens("none");
+            projectHead.innerText = `// Hi, Add a project`;
+        }  
         projectList.innerHTML = "";
-        projectHead.innerText = `// ${activeProject.project}`;
-        for (const project of projectDomList) {
+        for (const project of storageArrProjectsList) {
             const li = document.createElement("li");
             li.textContent = project;
             projectList.appendChild(li);
-
+            
+        }
+        if (storageArrProjectsList.length > 0 ) {
+            indicateActiveProject();
         }
 
-
-}
+    }
 
     function displayProjectTask () {
+        localStorage.setItem("todo", JSON.stringify(projects.theProject));
+        let storageArrProjects = JSON.parse(localStorage.getItem("todo"));
         projectTaskList.innerHTML = "";
-        for (let i = 0; i < projects[activeProject.project].length; i++) {
+        const curProject = storageArrProjects[activeProject.project];
+        for (let i = 0; i < curProject.length; i++) {
             const task = document.createElement("li");
-            task.className = `${projects[activeProject.project][i].priority}_imp`;
-            if (projects[activeProject.project][i].checked == true) {
+            task.className = `${curProject[i].priority}_imp`;
+            if (curProject[i].checked == true) {
                 task.classList.add("check");
             }else {
                 task.classList.remove("check");
             }
             task.id = `${i}`
             task.innerHTML = `<div class="li_title">
-                                <input type="checkbox" class="task_checkbox">
-                                <p>${projects[activeProject.project][i].title}</p>
+                                <input type="checkbox" class="task_checkbox" ${curProject[i].checked? "checked":""}>
+                                <p>${curProject[i].title}</p>
                             </div>
                             <div class="li_btn">
-                                <div class="due_date">${projects[activeProject.project][i].dueDate}</div>
+                                <div class="due_date">${curProject[i].dueDate}</div>
                                 <button><img src="./images/edit.png" alt="edit"></button>
                                 <button><img src="./images/bin.png" alt="delete"></button>
                                 <button><img src="./images/info.png" alt="info"></button>
@@ -50,9 +79,11 @@ function displayTodo () {
             
         
             projectTaskList.appendChild(task);
+            
 
             
         }
+        displayFigures();
     }
 
     function displayTaskInfo (index) {
@@ -62,7 +93,7 @@ function displayTodo () {
         const infoPriority = document.getElementById("info_priority");
         const infoProject = document.getElementById("info_project");
 
-        const curProject = projects[activeProject.project][index];
+        const curProject = projects.theProject[activeProject.project][index];
 
         infoTitle.innerText = curProject.title;
         infoDescription.innerText = curProject.description;
@@ -75,4 +106,4 @@ return {displayProject, displayProjectTask, displayTaskInfo}
 
 }
 
-export default displayTodo
+export { displayTodo, displayFigures }

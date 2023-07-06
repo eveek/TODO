@@ -1,6 +1,6 @@
-import { projects, activeProject } from "./addProject";
-import displayTodo from "./displayTodo";
-import { curTaskForm, curLiDiv } from ".";
+import { curLiDiv, curTaskForm } from ".";
+import { activeProject, projects} from "./addProject";
+import { displayTodo } from "./displayTodo";
 const { format } = require("date-fns");
 
 
@@ -16,7 +16,6 @@ class Task {
     }
 }
 
-
 function createNewTask () {
     const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
@@ -28,11 +27,11 @@ function createNewTask () {
     const newTask = new Task(title, description, dueDate, priority, false);
 
     if (curTaskForm.form == "add") {
-        projects[activeProject.project].push(newTask);
+        projects.theProject[activeProject.project].push(newTask);
     } else {
-        projects[activeProject.project][~~curLiDiv.li] = newTask;
+        projects.theProject[activeProject.project][~~curLiDiv.li] = newTask;
     }
     displayTodo().displayProjectTask();
 }
 
-export { createNewTask, Task };
+export { Task, createNewTask };

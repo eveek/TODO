@@ -7,7 +7,7 @@ function ediTask () {
     const description = document.getElementById("description");
     const date = document.getElementById("date");
 
-    const curProject = projects[activeProject.project][~~curLiDiv.li];
+    const curProject = projects.theProject[activeProject.project][~~curLiDiv.li];
 
     title.value = curProject.title;
     description.value = curProject.description;
